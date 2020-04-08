@@ -2,12 +2,18 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 public class Keyboard extends KeyAdapter{
+	boolean going = true;
 	
 	public void keyPressed(KeyEvent event) {
-		boolean going = true;
+		
 		if(going) {
 			if(event.getKeyCode() == 32) {
-				System.out.println("spacebar");
+				if(GuiSudoku.solve(GuiSudoku.board, GuiSudoku.cells)) {
+					System.out.println("Here is the solution to this Sudoku");
+				}
+				else {
+					System.out.println("No Solution");
+				}
 			}
 			going = false;
 		}
